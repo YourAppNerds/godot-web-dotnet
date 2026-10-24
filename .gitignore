@@ -1,0 +1,21 @@
+# Separate repos / toolchains / build output
+/godot/
+/godot-wt/
+/emsdk/
+/prototype/
+/out/
+/nupkgs/
+/.github/
+
+# Raw logs (large, machine-specific); reports and build scripts are kept
+/logs/*
+!/logs/*.md
+!/logs/*.bat
+!/logs/*.sh
+
+# Godot / .NET generated
+.godot/
+.mono/
+obj/
+bin/
+*.user

@@ -1,0 +1,9 @@
+config_version=5
+
+[application]
+config/name="HelloWebVisual"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.8", "C#")
+
+[dotnet]
+project/assembly_name="HelloWebVisual"

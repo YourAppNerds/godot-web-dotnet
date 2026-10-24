@@ -1,0 +1,12 @@
+<Project Sdk="Godot.NET.Sdk/4.8.0-beta">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <!-- Test culture-sensitive behavior: ICU instead of the Web default (invariant). Pass
+         -p:InvariantGlobalization=true via the GODOT_WRT_INVARIANT env var to test invariant mode. -->
+    <InvariantGlobalization Condition=" '$(GODOT_WRT_INVARIANT)' == '1' ">true</InvariantGlobalization>
+    <InvariantGlobalization Condition=" '$(GODOT_WRT_INVARIANT)' != '1' ">false</InvariantGlobalization>
+    <!-- GODOT_WRT_SHARDS=1 tests a partial ICU data file (EFIGS) instead of the full one. -->
+    <WasmIcuDataFileName Condition=" '$(GODOT_WRT_SHARDS)' == '1' ">icudt_EFIGS.dat</WasmIcuDataFileName>
+  </PropertyGroup>
+</Project>
