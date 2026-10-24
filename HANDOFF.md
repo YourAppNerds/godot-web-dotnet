@@ -107,6 +107,12 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 - None yet.
 
 ## Next brief
+- NOW (2026-10-24): Step 7 incl. 7d DONE (boomstick + cookie-crunch live on Pages, phone-tested). Next = step 8 Upstream, in this order, drafts only, nothing posted/pushed without user OK:
+  8a. Two standalone upstream PRs against godotengine/godot master: 6c7a5edb7f (Windows export hang on build server) and 63caa36557 (C# glue fails per method, not per class; open failure 16). Check each still applies to current master, rebase onto master in its own worktree branch, write PR text with rationale + repro.
+  8b. Draft Godot web bug reports from 7d games (engine-generic, not C#): user:// IndexedDB sync lost on pagehide; no APPLICATION_FOCUS_OUT/WM_CLOSE_REQUEST on web; ClipboardGet stale + Ctrl+V paste swallowed; mouse wheel uses last mouse-move position. Sources: logs/step7dC1-report.md, step7dC2-report.md.
+  8c. Draft #13076 comment: status + live game links.
+  8d. Plan how to offer web-dotnet-rebased to PR #106125.
+  Open decision for user: open failure 15 (ICU in official templates, GodotTrimGodotSharp default).
 Resume as manager: read only ## Status, ## Decisions, ## Open failures. Then run, one fresh subagent each (Opus; each in its own worktree branched from web-dotnet-rebased, or sequentially in godot-wt/rebase):
 - 5a: DONE.
 - 5b: Fix open failure 2 (export filter) + 3 (stub components); report .pck/.wasm size before/after.
