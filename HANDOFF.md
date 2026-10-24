@@ -32,6 +32,7 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 - 2026-10-23: Step 7b DONE. 5 commits 02293c7363..d306e4e5fa: GodotSharp native calls trapped on wasm ("function signature mismatch": any engine error print/GD.PushError, Array.Resize, await ToSignal, Variant.AsString) fixed via m2n signatures + Error-as-long + single-scalar C interop structs; EH shim guard >= Emscripten 6.0.6 (rename = LLVM 1d4e04f7a7c2 / emscripten d212b13bed0b); opt-in ICU globalization (InvariantGlobalization=false, +0.5 MB gzip PCK). SIMD already works. WRT 43/0 ICU, 39/0 invariant, threads + nothreads. Details logs/step7b-report.md.
 - 2026-10-23: Step 7c DONE. 4 commits d990e1edf9..67806bd96f: invariant default really applies now (7b bug: WasmFeatures.props set false first; PCK -1.6 MB), opt-in GodotTrimGodotSharp (PCK 7.7 -> 3.9 MB), opt-in SCons dotnet_web_icu=no (wasm -1.3 MB raw / -0.4 MB br), trimmer reruns on root change. Mono is only ~3 MB of the 34 MB wasm; ~31 MB is Godot engine. WRT 43/0 ICU, 39/0 inv (debug, release, threads). Details logs/step7c-report.md.
 - 2026-10-24: Backup. Engine branch pushed to origin/web-dotnet-rebased (YAN-kyle/godot, 31 commits, HEAD 67806bd96f). Workspace repo (HANDOFF, reports, samples, scripts) public at https://github.com/YourAppNerds/godot-web-dotnet. Raw .log files not tracked. Next: step 7d real-game test (game type TBD with user).
+- 2026-10-24: Step 7d1 DONE. games/boomstick (local repo, 7 commits): ASCII-map level, procedural textures, player, F3 debug overlay autoload, F4/F5 billboard stress, autostress=N. Web release nothreads: wasm 33.7 MB (10.3 gz), pck 7.9 MB (2.4 gz). Found open failures 16-19. Details logs/step7d1-report.md.
 - Step 1 (toolchain check): DONE 2026-10-22. Workspace dirs created (logs, samples). godot\ and prototype\ left for step 2. Missing: SCons, emsdk, MSVC Build Tools, wasm-tools workload, .NET 9+ SDK.
 
 ## Toolchain
@@ -91,6 +92,10 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 8. FIXED 5d (mono_wasm_* imports). Globalization: opt-in ICU DONE 7b (d306e4e5fa; default stays invariant; one icudt file in PCK; HybridGlobalization gone in .NET 10). Left: [JSImport] interop unsupported (throws).
 14. FIXED 9b0e7cad13. Was: Jiterpreter on by default with stub imports: wasted interpreter work; disable via runtime options.
 15. 7c: decide official template policy for dotnet_web_icu (ICU vs not) and whether GodotTrimGodotSharp becomes default; production=yes (lto=thin) makes web mono wasm +0.76 MB.
+16. 7d1: C# RenderingServer unusable on web template: NativeMethodBindNotFoundException (Method 'RenderingServer.get_video_adapter_type') in RenderingServer..cctor(); one missing bind kills whole class. Likely hash/signature differs when rendering_device disabled. Repro: GD.Print(RenderingServer.GetVideoAdapterName()) in _Ready. Blocks MultiMesh/low-level drawing from C#.
+17. 7d1: per-node C# _Process costs ~11 us/node on web interpreter (1000 nodes: 0.85 ms C# bodies, 13.1 ms engine process). Games should batch updates in one manager node. Possible engine/glue optimization target.
+18. 7d1: installed editor built from c81d539c9, templates from 0e25a7958: rebuild editor from branch HEAD.
+19. 7d1: web export without .sln writes pck with no C# assemblies, only prints ERROR (should fail export).
 - None yet.
 
 ## Next brief
