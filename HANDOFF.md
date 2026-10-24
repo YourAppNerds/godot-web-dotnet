@@ -84,6 +84,7 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 - 2026-10-24: Step 7d = two playable test games, own repos in YourAppNerds org, local under games/ (ignored here). A: boomstick (Doom-like 3D boomer shooter, billboard sprites; perf + GC + 3D/WebGL2 test). C: cookie-crunch (Cookie Clicker-like idle; JSON save to user://, big numbers, UI; son = tester). Doom first. Hosted on GitHub Pages with threads=no template (no COOP/COEP there). Generic names avoid trademarks.
 - 2026-10-24: Keep engine fork under YAN-kyle (org-owned forks cannot "allow edits by maintainers" on upstream PRs).
 - 2026-10-24: Browsers: Chromium (Windows, Android) + Firefox (installing). No Safari yet.
+- 2026-10-24: Godot contribution rules forbid AI-authored code, AI-written human-to-human text, and AI agents submitting PRs (contribution_rules.html, PR template). So no Claude-written PRs, issues or comments upstream. Claude writes fact sheets only; user writes and posts everything in own words, with AI-use disclosure. Step 8a = option 2: user comments on existing issues #110101 and #103315; no PRs now. Method-bind PR later only if maintainers are open to it, re-implemented by user.
 ## Open failures
 1. FIXED 3affe161ca (DOTNET.setup).
 2. FIXED c9790251b2 (pck filter).
@@ -108,10 +109,10 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 
 ## Next brief
 - NOW (2026-10-24): Step 7 incl. 7d DONE (boomstick + cookie-crunch live on Pages, phone-tested). Next = step 8 Upstream, in this order, drafts only, nothing posted/pushed without user OK:
-  8a. Two standalone upstream PRs against godotengine/godot master: 6c7a5edb7f (Windows export hang on build server) and 63caa36557 (C# glue fails per method, not per class; open failure 16). Check each still applies to current master, rebase onto master in its own worktree branch, write PR text with rationale + repro.
-  8b. Draft Godot web bug reports from 7d games (engine-generic, not C#): user:// IndexedDB sync lost on pagehide; no APPLICATION_FOCUS_OUT/WM_CLOSE_REQUEST on web; ClipboardGet stale + Ctrl+V paste swallowed; mouse wheel uses last mouse-move position. Sources: logs/step7dC1-report.md, step7dC2-report.md.
-  8c. Draft #13076 comment: status + live game links.
-  8d. Plan how to offer web-dotnet-rebased to PR #106125.
+  8a. DONE as fact sheets (logs/step8a-notes.md). Rebased local branches dotnet-build-server-hang b3a389f8a7, dotnet-missing-method-bind c928609745 on upstream/master c8256a8ece (clean, not built). Upstream issues exist: #110101 (hang; raulsntos against disabling build server), #103315 (+ closed #95933, #103774). User writes and posts comments on #110101 and #103315 in own words. No PRs.
+  8b. Fact sheets (not report text) for web bugs from 7d games: user:// IndexedDB sync lost on pagehide; no APPLICATION_FOCUS_OUT/WM_CLOSE_REQUEST on web; ClipboardGet stale + Ctrl+V paste swallowed; mouse wheel uses last mouse-move position. Search upstream for existing issues first. Sources: logs/step7dC1-report.md, step7dC2-report.md.
+  8c. Fact sheet for user's #13076 comment: status + live game links.
+  8d. Fact sheet + plan for how user offers web-dotnet-rebased to PR #106125.
   Open decision for user: open failure 15 (ICU in official templates, GodotTrimGodotSharp default).
 Resume as manager: read only ## Status, ## Decisions, ## Open failures. Then run, one fresh subagent each (Opus; each in its own worktree branched from web-dotnet-rebased, or sequentially in godot-wt/rebase):
 - 5a: DONE.
