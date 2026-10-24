@@ -43,6 +43,7 @@ public partial class Main : Control
 
         RunSyncChecks();
         RunStep7bChecks();
+        RunStep7eChecks();
 
         _ = DelayCheck();
         _ = YieldCheck();
