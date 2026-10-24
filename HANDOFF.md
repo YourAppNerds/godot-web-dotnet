@@ -72,6 +72,9 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 - 2026-10-22: Engine base = godotengine/godot PR #106125 (raulsntos:dotnet/mono-static-linking, head aa1f5ff). Step 2 fetches PR branch + master. Fork needs explicit user OK (public action).
 - Step 2 should fork godotengine/godot and fetch the PR branch (raulsntos:dotnet/mono-static-linking) as the base, not only master.
 - 2026-10-22: Project moved to D:/source/repos/godot-web-dotnet.
+- 2026-10-24: Step 7d = two playable test games, own repos in YourAppNerds org, local under games/ (ignored here). A: boomstick (Doom-like 3D boomer shooter, billboard sprites; perf + GC + 3D/WebGL2 test). C: cookie-crunch (Cookie Clicker-like idle; JSON save to user://, big numbers, UI; son = tester). Doom first. Hosted on GitHub Pages with threads=no template (no COOP/COEP there). Generic names avoid trademarks.
+- 2026-10-24: Keep engine fork under YAN-kyle (org-owned forks cannot "allow edits by maintainers" on upstream PRs).
+- 2026-10-24: Browsers: Chromium (Windows, Android) + Firefox (installing). No Safari yet.
 ## Open failures
 1. FIXED 3affe161ca (DOTNET.setup).
 2. FIXED c9790251b2 (pck filter).

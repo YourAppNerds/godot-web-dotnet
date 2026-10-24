@@ -19,3 +19,6 @@
 obj/
 bin/
 *.user
+
+# Game projects (each its own repo)
+/games/
