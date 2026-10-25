@@ -100,7 +100,7 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 11. First run copies whole publish folder to cache; could read PCK directly.
 8. FIXED 5d (mono_wasm_* imports). Globalization: opt-in ICU DONE 7b (d306e4e5fa; default stays invariant; one icudt file in PCK; HybridGlobalization gone in .NET 10). Left: [JSImport] interop unsupported (throws).
 14. FIXED 9b0e7cad13. Was: Jiterpreter on by default with stub imports: wasted interpreter work; disable via runtime options.
-15. 7c: decide official template policy for dotnet_web_icu (ICU vs not) and whether GodotTrimGodotSharp becomes default; production=yes (lto=thin) makes web mono wasm +0.76 MB.
+15. 7c: DECIDED 2026-10-24 (owner): recommend official templates keep ICU built in (projects default invariant, opt in per project); GodotTrimGodotSharp stays opt-in, revisit default after more real projects. Findings-only for upstream. Note: production=yes (lto=thin) makes web mono wasm +0.76 MB.
 16. FIXED 7e (971ca635e8 binds in every build; 63caa36557 C# glue fails per method, not per class; upstream master has same bug: PR candidate). Was: C# RenderingServer unusable on web template: NativeMethodBindNotFoundException (Method 'RenderingServer.get_video_adapter_type') in RenderingServer..cctor(); one missing bind kills whole class. Likely hash/signature differs when rendering_device disabled. Repro: GD.Print(RenderingServer.GetVideoAdapterName()) in _Ready. Blocks MultiMesh/low-level drawing from C#.
 17. CORRECTED 7d2: real script dispatch ~0.9 us/node on web; the 11 us figure came from TIME_PROCESS (max over ~1 s, includes RenderingServer::draw). Was: per-node C# _Process costs ~11 us/node on web interpreter (1000 nodes: 0.85 ms C# bodies, 13.1 ms engine process). Games should batch updates in one manager node. Possible engine/glue optimization target.
 18. FIXED 7e (editor, 4 templates, nupkgs from 11875322e9; NuGet cache cleared). Was: installed editor built from c81d539c9, templates from 0e25a7958: rebuild editor from branch HEAD.
@@ -113,7 +113,7 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
   8b. Fact sheets (not report text) for web bugs from 7d games: user:// IndexedDB sync lost on pagehide; no APPLICATION_FOCUS_OUT/WM_CLOSE_REQUEST on web; ClipboardGet stale + Ctrl+V paste swallowed; mouse wheel uses last mouse-move position. Search upstream for existing issues first. Sources: logs/step7dC1-report.md, step7dC2-report.md.
   8c. Fact sheet for user's #13076 comment: status + live game links.
   8d. Fact sheet + plan for how user offers web-dotnet-rebased to PR #106125.
-  Open decision for user: open failure 15 (ICU in official templates, GodotTrimGodotSharp default).
+  Open failure 15 decided (see ## Open failures).
 Resume as manager: read only ## Status, ## Decisions, ## Open failures. Then run, one fresh subagent each (Opus; each in its own worktree branched from web-dotnet-rebased, or sequentially in godot-wt/rebase):
 - 5a: DONE.
 - 5b: Fix open failure 2 (export filter) + 3 (stub components); report .pck/.wasm size before/after.
