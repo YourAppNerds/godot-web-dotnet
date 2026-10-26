@@ -1,7 +1,7 @@
 #!/bin/bash
 S="$(cd "$(dirname "$0")" && pwd)"
-L=/d/source/yourappnerds/godot-web-dotnet/logs
-B=/d/source/yourappnerds/godot-web-dotnet/godot-wt/rebase/bin
+L=/d/source/YAN-kyle/godot-web-dotnet/logs
+B=/d/source/YAN-kyle/godot-web-dotnet/godot-wt/rebase/bin
 mkdir -p $S/final
 run() { # target threads tag extra
   bash $S/build7b.sh $1 $2 $4 > $L/step7c-build-$3.log 2>&1

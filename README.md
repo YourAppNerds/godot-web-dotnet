@@ -21,5 +21,5 @@ The C# web templates build with Emscripten 6.0.12 (threads on and off, debug and
 
 ## Caveats
 
-- Paths in the scripts and in each sample's `nuget.config` point at this author's machine (`D:\source\yourappnerds\godot-web-dotnet`). Change them to your own checkout. The samples need the GodotSharp nupkgs built from the branch above.
+- Paths in the scripts and in each sample's `nuget.config` point at this author's machine (`D:\source\YAN-kyle\godot-web-dotnet`). Change them to your own checkout. The samples need the GodotSharp nupkgs built from the branch above.
 - This is experimental work, not an official Godot release.
