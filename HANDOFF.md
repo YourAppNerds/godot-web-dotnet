@@ -57,8 +57,8 @@ Make Godot 4 .NET (C#) projects export to Web. Build on raulsntos/godot4-web-dot
 | Disk C: | 369 GB free of 931 GB | ~50+ GB | none |
 
 ## Env setup
-- emsdk (not on permanent PATH). Git Bash: `export EM_CONFIG=/d/source/repos/godot-web-dotnet/emsdk/.emscripten; export PATH=/d/source/repos/godot-web-dotnet/emsdk/upstream/emscripten:$PATH; emcc --version` -> 6.0.12. (`source emsdk_env.sh` did not put emcc on PATH under MSYS UCRT64.)
-- PowerShell: `& D:\source\repos\godot-web-dotnet\emsdk\emsdk_env.ps1`; cmd: `emsdk_env.bat`.
+- emsdk (not on permanent PATH). Git Bash: `export EM_CONFIG=/d/source/yourappnerds/godot-web-dotnet/emsdk/.emscripten; export PATH=/d/source/yourappnerds/godot-web-dotnet/emsdk/upstream/emscripten:$PATH; emcc --version` -> 6.0.12. (`source emsdk_env.sh` did not put emcc on PATH under MSYS UCRT64.)
+- PowerShell: `& D:\source\yourappnerds\godot-web-dotnet\emsdk\emsdk_env.ps1`; cmd: `emsdk_env.bat`.
 - SCons: `python -m SCons ...` (scons.exe in %APPDATA%\Python\Python314\Scripts, not on PATH).
 - dotnet 9 vs 10 chosen by global.json (`{"sdk":{"version":"9.0.0","rollForward":"latestFeature"}}`); default is 10.0.201.
 - MSVC: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat`.
